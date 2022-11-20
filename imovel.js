@@ -31,3 +31,119 @@ Um apartamento deve ter o valor do seu condomínio somado ao valor base;
 Uma Kitnet não tem alterações no seu valor base;
 
 */
+
+class Imovel{
+    endereco
+    cep
+    area
+    quantidadeBanheiros
+    quantidadeQuartos
+    pessoasImovel
+    valor
+    
+
+    constructor(endereco, cep, area, quantidadeBanheiros, quantidadeQuartos, pessoasImovel, valor ){
+        this.endereco = endereco
+        this.cep = cep
+        this.area = area
+        this.quantidadeBanheiros = quantidadeBanheiros
+        this.quantidadeQuartos = quantidadeQuartos
+        this.pessoasImovel = pessoasImovel
+        this.valor = valor
+    }
+}
+
+class Pessoa{
+    nome
+    cpf
+    dataNascimento
+
+}
+
+class Casa extends Imovel{
+    comQuintal
+
+    constructor(endereco, cep, area, quantidadeBanheiros, quantidadeQuartos, pessoasImovel, valor, comQuintal){
+        super(endereco, cep, area, quantidadeBanheiros, quantidadeQuartos, pessoasImovel, valor)
+        this.comQuintal = comQuintal
+
+       if(this.quantidadeBanheiros>5){
+        this.quantidadeBanheiros = 5
+       }
+    }
+
+    AdicionarPessoa(){
+        this.pessoasImovel = this.pessoasImovel + 1
+        alert("Pessoa adicionada com sucesso")
+    }
+
+    RemoverPessoa(){
+        this.pessoasImovel = this.pessoasImovel - 1
+        alert("Pessoa removida com sucesso")
+    }
+
+    CalcularValor(){
+        if(this.comQuintal == true){
+            this.valor = (this.valor/100) * 130
+        }
+    }
+}
+
+class Apartamento extends Imovel{
+    andar
+    valorCondominio
+
+    constructor(endereco, cep, area, quantidadeBanheiros, quantidadeQuartos, pessoasImovel, valor, andar, condominio){
+        super(endereco, cep, area, quantidadeBanheiros, quantidadeQuartos, pessoasImovel, valor)
+        this.andar = andar
+        this.condominio = condominio
+
+       if(this.quantidadeBanheiros>3){
+        this.quantidadeBanheiros = 3
+       }
+    }
+
+
+
+    AdicionarPessoa(){
+        this.pessoasImovel = this.pessoasImovel + 1
+        alert("Pessoa adicionada com sucesso")
+    }
+
+    RemoverPessoa(){
+        this.pessoasImovel = this.pessoasImovel - 1
+        alert("Pessoa removida com sucesso")
+    }
+
+    CalcularValor(){
+        this.valor = this.valor + this.condominio
+    }
+}
+
+class Kitnet extends Imovel{
+    
+    constructor(endereco, cep, area, quantidadeBanheiros, quantidadeQuartos, pessoasImovel, valor){
+        super(endereco, cep, area, quantidadeBanheiros, quantidadeQuartos, pessoasImovel, valor)
+
+       if(this.quantidadeBanheiros>2){
+        this.quantidadeBanheiros = 2
+       }
+    }
+
+
+    AdicionarPessoa(){
+        this.pessoasImovel = this.pessoasImovel + 1
+        alert("Pessoa adicionada com sucesso")
+    }
+
+    RemoverPessoa(){
+        this.pessoasImovel = this.pessoasImovel - 1
+        alert("Pessoa removida com sucesso")
+    }
+}
+
+let casa = new Casa("Rua alvinopolis", 35160179, 240, 6, 5, 8, 350, true)
+
+let apartamento = new Apartamento("Rua alvinopolis", 35160179, 100, 2, 5, 7, 300, 5, 100)
+
+let kitnet = new Kitnet("Rua alvinopolis", 35160179, 50, 6, 1, 7, 250)
